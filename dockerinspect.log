@@ -1,0 +1,265 @@
+[
+    {
+        "Id": "b11c1a64d2935e2534cac8a85b839b02b7fe89c468bddf6217ec281f9d6b81fb",
+        "Created": "2020-08-12T05:45:02.029856161Z",
+        "Path": "/bin/sh",
+        "Args": [
+            "-c",
+            "sudo -E python /opt/digital_slide_archive/set_environment.py ubuntu &&     sudo -E sysctl -w net.ipv4.conf.eth0.route_localnet=1 &&     sudo -E iptables -t nat -A OUTPUT -o lo -p tcp -m tcp --dport 27017 -j DNAT --to-destination `dig +short mongodb`:27017 &&     sudo -E iptables -t nat -A POSTROUTING -o eth0 -m addrtype --src-type LOCAL --dst-type UNICAST -j MASQUERADE &&     sudo -E su ubuntu -c     '/home/ubuntu/.virtualenvs/girder/bin/pip install -e /opt/HistomicsUI' ;     sudo -E su ubuntu -c     'pushd /opt/slicer_cli_web; /home/ubuntu/.virtualenvs/girder/bin/pip install -e .[girder]; popd' ;     sudo -E su ubuntu -c     'pushd /opt/girder; /home/ubuntu/.virtualenvs/girder/bin/pip install -e .[mount]; popd' ;     sudo -E su ubuntu -c     'PYTHONUNBUFFERED=true PATH=\"/home/ubuntu/.virtualenvs/girder/bin:$PATH\" girder mount /opt/digital_slide_archive/mount >/opt/logs/mount.log 2>&1' ;     sudo -E su ubuntu -c     'PYTHONUNBUFFERED=true PATH=\"/home/ubuntu/.virtualenvs/girder/bin:$PATH\" girder serve --dev >/opt/logs/girder.log 2>&1'"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 28811,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2020-09-14T12:02:36.932171521Z",
+            "FinishedAt": "2020-09-14T12:02:34.726591725Z"
+        },
+        "Image": "sha256:cca2c2eb2b706803a14903e45ff7961ab643cc2ff8872be8d3305d79dd138c90",
+        "ResolvConfPath": "/var/lib/docker/containers/b11c1a64d2935e2534cac8a85b839b02b7fe89c468bddf6217ec281f9d6b81fb/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/b11c1a64d2935e2534cac8a85b839b02b7fe89c468bddf6217ec281f9d6b81fb/hostname",
+        "HostsPath": "/var/lib/docker/containers/b11c1a64d2935e2534cac8a85b839b02b7fe89c468bddf6217ec281f9d6b81fb/hosts",
+        "LogPath": "/var/lib/docker/containers/b11c1a64d2935e2534cac8a85b839b02b7fe89c468bddf6217ec281f9d6b81fb/b11c1a64d2935e2534cac8a85b839b02b7fe89c468bddf6217ec281f9d6b81fb-json.log",
+        "Name": "/dsa_girder",
+        "RestartCount": 393,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "unconfined",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/home/tele/.dsa/logs:/opt/logs:rw",
+                "/home/tele/.dsa/logs:/opt/digital_slide_archive/logs:rw",
+                "/home/tele/.dsa/assetstore:/opt/digital_slide_archive/assetstore:rw",
+                "/usr/bin/docker:/usr/bin/docker",
+                "/var/run/docker.sock:/var/run/docker.sock"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "default",
+            "PortBindings": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "always",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "shareable",
+            "Cgroup": "",
+            "Links": [
+                "/dsa_mongodb:/dsa_girder/mongodb",
+                "/dsa_rabbitmq:/dsa_girder/rabbitmq",
+                "/dsa_memcached:/dsa_girder/memcached"
+            ],
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": true,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [
+                "label=disable"
+            ],
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": 0,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": null,
+            "ReadonlyPaths": null
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/e08eb824f4c764a4a038c79ff1b8d9a22faaeba62787859ba068cf7eaba94992-init/diff:/var/lib/docker/overlay2/378cab40ae4ff4bd3e3a682692aee7f548de14c30852805eb234fa25c05907e8/diff:/var/lib/docker/overlay2/0e1b74a2ee718c7450e6bf2eb5f2cfeb5baf89aac3e2f483841bd8e566fbb38b/diff:/var/lib/docker/overlay2/7c7a1f9b730de5d00f2df5b06490afac39ee04b72c1edf813d7fd44d5d1b78be/diff:/var/lib/docker/overlay2/eda333cbc608706d8d3e76b9efec1cc9b6ddd00a612905185980bf6744b8a93f/diff:/var/lib/docker/overlay2/f2ce662ddad496ee414d7d8dcf564bb6fc573555480837b901513c5fefca0dd7/diff:/var/lib/docker/overlay2/611544f93049716c9ec28c12a718b2940ceea83bbe6d081950baf8cdc10beb57/diff:/var/lib/docker/overlay2/aaf31c3963cc27f7d4e98242c87de3730b30cfe94cb098efa810052bcf551f3c/diff:/var/lib/docker/overlay2/ec0117bb04438ea768f39d71e02415943cb403aeb2577829597716a8fd020258/diff:/var/lib/docker/overlay2/cd3bb7f29a8102c9269ed387e8c6aa4892fd1405c0bb41276a7cb1b962720afc/diff:/var/lib/docker/overlay2/37b7221f67ed0a3dfac0468615b99c6082a31b20110f509d418ea7c25a1f67b6/diff:/var/lib/docker/overlay2/81b5eece6b47d4c856b1a1ec21ca103a3509b2eb4e9d673b21aea84ff5d9326c/diff:/var/lib/docker/overlay2/6286b9580b64e611148f5e60853c7a3a57d972645cd893b784850b9c79a15ae1/diff:/var/lib/docker/overlay2/e0071b1066d86fea228ce37c193c76634d2e31d41d0fc4323e03ec18281bc2df/diff:/var/lib/docker/overlay2/e7c36eadef2a6ecfec4bbbccdf07e86082974a300269fe6311e7f3445e1d1e9e/diff:/var/lib/docker/overlay2/7066ebc4ddfff57ce75b7d7cdc4cb8a5e092a8e2842ac702309fbfe0307a3974/diff:/var/lib/docker/overlay2/f13f9471be6bf0242266a41fb2c16df04eabb27d69eb4800a7f35c9a11bc5c4e/diff:/var/lib/docker/overlay2/d22e3c7a772a6922039eeb974a9fd48de4fc008a12f557855eb5a0a6ec510e17/diff",
+                "MergedDir": "/var/lib/docker/overlay2/e08eb824f4c764a4a038c79ff1b8d9a22faaeba62787859ba068cf7eaba94992/merged",
+                "UpperDir": "/var/lib/docker/overlay2/e08eb824f4c764a4a038c79ff1b8d9a22faaeba62787859ba068cf7eaba94992/diff",
+                "WorkDir": "/var/lib/docker/overlay2/e08eb824f4c764a4a038c79ff1b8d9a22faaeba62787859ba068cf7eaba94992/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/tele/.dsa/assetstore",
+                "Destination": "/opt/digital_slide_archive/assetstore",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/tele/.dsa/logs",
+                "Destination": "/opt/digital_slide_archive/logs",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/tele/.dsa/logs",
+                "Destination": "/opt/logs",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/usr/bin/docker",
+                "Destination": "/usr/bin/docker",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/var/run/docker.sock",
+                "Destination": "/var/run/docker.sock",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "girder",
+            "Domainname": "",
+            "User": "ubuntu",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "HOST_UID=1000",
+                "HOST_GID=1000",
+                "GIRDER_WORKER_TMP_ROOT=/tmp/girder_worker",
+                "GIRDER_WORKER_CONCURRENCY",
+                "HOST_DOCKER_GID=129",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=en_US.UTF-8",
+                "GIRDER_EXEC_USER=ubuntu"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "sudo -E python /opt/digital_slide_archive/set_environment.py ubuntu &&     sudo -E sysctl -w net.ipv4.conf.eth0.route_localnet=1 &&     sudo -E iptables -t nat -A OUTPUT -o lo -p tcp -m tcp --dport 27017 -j DNAT --to-destination `dig +short mongodb`:27017 &&     sudo -E iptables -t nat -A POSTROUTING -o eth0 -m addrtype --src-type LOCAL --dst-type UNICAST -j MASQUERADE &&     sudo -E su ubuntu -c     '/home/ubuntu/.virtualenvs/girder/bin/pip install -e /opt/HistomicsUI' ;     sudo -E su ubuntu -c     'pushd /opt/slicer_cli_web; /home/ubuntu/.virtualenvs/girder/bin/pip install -e .[girder]; popd' ;     sudo -E su ubuntu -c     'pushd /opt/girder; /home/ubuntu/.virtualenvs/girder/bin/pip install -e .[mount]; popd' ;     sudo -E su ubuntu -c     'PYTHONUNBUFFERED=true PATH=\"/home/ubuntu/.virtualenvs/girder/bin:$PATH\" girder mount /opt/digital_slide_archive/mount >/opt/logs/mount.log 2>&1' ;     sudo -E su ubuntu -c     'PYTHONUNBUFFERED=true PATH=\"/home/ubuntu/.virtualenvs/girder/bin:$PATH\" girder serve --dev >/opt/logs/girder.log 2>&1'"
+            ],
+            "ArgsEscaped": true,
+            "Image": "dsarchive/dsa_girder:latest",
+            "Volumes": null,
+            "WorkingDir": "/opt/HistomicsUI",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "maintainer": "Kitware, Inc. <kitware@kitware.com>"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "dc2ccc919edd5fab2778467ec2f7d77f3aca6a89e05ae4186f9c4ed2f24d124b",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "8080"
+                    }
+                ]
+            },
+            "SandboxKey": "/var/run/docker/netns/dc2ccc919edd",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "dsa": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "girder",
+                        "b11c1a64d293"
+                    ],
+                    "NetworkID": "36dc7d8050a89015f3f8aa6ff57fc4d431dbda9c0fe8c9b8d3a8a11f842cf9ce",
+                    "EndpointID": "c643cf78078bbfcf8a1af0e552e3c5b1f73f6012748d1980f1bfb33906fedd51",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.6",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:12:00:06",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
